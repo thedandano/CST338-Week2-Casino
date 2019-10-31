@@ -9,6 +9,10 @@ public class Main
       System.out.println("this should say be blank: " + test.getString1());
       System.out.println("set to hola: " + test.setString1("hola"));
       System.out.println("this should say hola: " + test.getString1());
+      System.out.println("toString(): " + test.toString());
+      
+      test.saveWinnings(5);
+      System.out.println(test.displayWinnings());
    }
 }
 
@@ -120,4 +124,38 @@ class ThreeString
       return false; 
    }
    
+   /**
+    * toString() method to return private string variables as a string
+    * @return string variables as a string
+    */
+   public String toString()
+   {      
+      return "String 1: " + string1 + 
+         " String2: " + string2 + 
+         " String3: " + string3;   
+   }
+   
+   public boolean saveWinnings(int winnings)
+   {
+      pullWinnings[0] = winnings;
+      return false;
+   }
+   /**
+    * Displays the Winnings Score
+    * @return String representation of Winnings
+    */
+   public String displayWinnings()
+   {
+      String winnings = "";
+      int sum = 0;
+      
+      for(int x = 0; x < pullWinnings.length; x++) 
+      {
+         winnings += pullWinnings[x];
+         sum =+ pullWinnings[x];
+      }
+        
+      
+      return winnings + " Total Winnings: " + sum;
+   }
 }
