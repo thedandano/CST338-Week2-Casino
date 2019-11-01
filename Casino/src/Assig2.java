@@ -1,7 +1,13 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Assig2
 {
+   public static final String SPACE = "(SPACE)";
+   public static final String CHERRIES = "cherries";
+   public static final String BAR = "BAR";
+   public static final String SEVEN = "7";
+   
    public static void main(String []args)
    {
       /*ThreeString test = new ThreeString();
@@ -16,7 +22,12 @@ public class Assig2
       System.out.println(test.displayWinnings());
       */
 
-      getBet();
+      //getBet();
+      //pull();
+      
+      boolean yoyoma = !"cherries".equals(CHERRIES);
+      System.out.println(yoyoma);
+     
    }
    
    /**
@@ -61,6 +72,88 @@ public class Assig2
       
       return userBet; 
    }
+   /**
+    * This method instantiates the ThreeStrings class and fills it with 3
+    * Strings.
+    * @return a ThreeString Object filled with 3 random Strings consisting of
+    * "Space", "cherries", "BAR", or "7".
+    */
+   static ThreeString pull()
+   {
+      ThreeString threeString = new ThreeString();
+      
+      threeString.setString1(randString());
+      threeString.setString2(randString());
+      threeString.setString3(randString());
+      //System.out.println(threeString.toString());
+      
+      return threeString;
+      
+   }
+   /**
+    * A Private helper method that generates a random String
+    * @return A random string consisting of either "7", "cherries", "Bar", 
+    * or "space."
+    */
+   private static String randString()
+   {
+      Random random = new Random();
+      double randomString = random.nextDouble();
+     
+      if(randomString <= .50)
+         return SPACE;
+      else if(randomString > .50 && randomString <= .75)
+         return CHERRIES;
+      else if(randomString > .75 && randomString <= .875)
+         return BAR;
+      else if(randomString > .875)
+         return SEVEN;
+      else
+         return "ERROR";
+   }
+   /*
+    * This method analysis the players play and calculates what they payout
+    * multiplier will be i.e., how much the bet will be multiplied by.
+    * @param ThreeString object
+    * @return the payout multiplier
+    */
+   int getPayMultiplier(ThreeString thePull)
+   {
+      
+      String stringPull1 = thePull.getString1();
+      String stringPull2 = thePull.getString2();
+      String stringPull3 = thePull.getString3();
+      
+      //cherries [not cherries] [any]
+      if(stringPull1.equals(CHERRIES) 
+         && !stringPull2.equals(CHERRIES))
+         return 5;
+      //cherries cherries [not cherries]
+      else if(stringPull1.equals(CHERRIES) 
+         && stringPull2.equals(CHERRIES) 
+         && !stringPull3.equals(CHERRIES))
+         return 15;
+      // cherries cherries cherries
+      else if(stringPull1.equals(CHERRIES)
+         && stringPull2.equals(CHERRIES)
+         && stringPull3.equals(CHERRIES))
+         return 30;
+      // BAR BAR BAR
+      else if(stringPull1.equals(BAR)
+         && stringPull2.equals(BAR)
+         && stringPull3.equals(BAR))
+         return 50;
+      // 7 7 7
+      else if(stringPull1.equals(SEVEN)
+         && stringPull2.equals(SEVEN)
+         && stringPull3.equals(SEVEN))
+         return 100;
+     
+      // no winning combinations   
+      return 0;
+   }
+   
+
 }
 
 class ThreeString
@@ -177,9 +270,7 @@ class ThreeString
     */
    public String toString()
    {      
-      return "String 1: " + string1 + 
-         " String2: " + string2 + 
-         " String3: " + string3;   
+      return string1 + " " + string2 + " " + string3;   
    }
    
    public boolean saveWinnings(int winnings)
