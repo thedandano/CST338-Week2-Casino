@@ -5,6 +5,9 @@ public class Assig2
 {
    public static void main(String []args)
    {
+      
+     ThreeString game = new ThreeString();
+     
      do 
      {
         int bet = getBet();
@@ -18,9 +21,12 @@ public class Assig2
         
         display(pull,winnings); 
         
+        game.saveWinnings(winnings);
+        game.displayWinnings();
+        
      }while(true);
       
-     
+     //game.displayWinnings();
    }
    
    /**
@@ -286,6 +292,7 @@ class ThreeString
    public boolean saveWinnings(int winnings)
    {
       pullWinnings[numPulls] = winnings;
+      //numPulls++;
       return false;
    }
    /**
@@ -294,6 +301,10 @@ class ThreeString
     */
    public String displayWinnings()
    {
+      /**
+       * I want to change this method 
+       * Also need to add the pullWinnings()
+       */
       String winnings = "";
       int sum = 0;
       
