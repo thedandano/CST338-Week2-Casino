@@ -14,9 +14,9 @@ public class Assig2
         
         ThreeString pull = pull();
         
-       int winnings = getPayMultiplier(pull) * bet;
+        int winnings = getPayMultiplier(pull) * bet;
         
-       display(pull,winnings); 
+        display(pull,winnings); 
         
      }while(true);
       
