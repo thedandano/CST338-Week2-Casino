@@ -3,30 +3,23 @@ import java.util.Scanner;
 
 public class Assig2
 {
-   public static final String SPACE = "(SPACE)";
-   public static final String CHERRIES = "cherries";
-   public static final String BAR = "BAR";
-   public static final String SEVEN = "7";
-   
    public static void main(String []args)
    {
-      /*ThreeString test = new ThreeString();
-      System.out.println("this is a test get should be blank: " + test.getString1());
-      System.out.println("set to null: " + test.setString1(null));
-      System.out.println("this should say be blank: " + test.getString1());
-      System.out.println("set to hola: " + test.setString1("hola"));
-      System.out.println("this should say hola: " + test.getString1());
-      System.out.println("toString(): " + test.toString());
+     do 
+     {
+        int bet = getBet();
+        
+        if (bet == 0)
+           System.exit(0);
+        
+        ThreeString pull = pull();
+        
+       int winnings = getPayMultiplier(pull) * bet;
+        
+       display(pull,winnings); 
+        
+     }while(true);
       
-      test.saveWinnings(5);
-      System.out.println(test.displayWinnings());
-      */
-
-      //getBet();
-      //pull();
-      
-      boolean yoyoma = !"cherries".equals(CHERRIES);
-      System.out.println(yoyoma);
      
    }
    
@@ -44,27 +37,26 @@ public class Assig2
       {
          System.out.print("Place your bet! Must be 1-100 or enter 0 to exit: ");
          userBet = in.nextInt();
-         System.out.println("You bet: " + userBet);
+         //System.out.println("You bet: " + userBet);
          
          //validates user input and provides appropriate responses
          if(userBet < 0)
          {
-            System.out.println("Invalid Bet! Try again...\n");
+            //System.out.println("Invalid Bet! Try again...\n");
             invalidBet = true;
          }
          else if(userBet > 100)
          {
-            System.out.println("Invalid Bet! Try again...\n");
+            //System.out.println("Invalid Bet! Try again...\n");
             invalidBet = true;
          }
-         else if(userBet == 0)
+        /* else if(userBet == 0)
          {
             System.out.println("Thanks for playing!");
             System.exit(0);
-         }
+         }*/
          else
          {
-            System.out.println("Great!");
             invalidBet = false;
          }
          
@@ -101,23 +93,23 @@ public class Assig2
       double randomString = random.nextDouble();
      
       if(randomString <= .50)
-         return SPACE;
+         return "SPACE";
       else if(randomString > .50 && randomString <= .75)
-         return CHERRIES;
+         return "CHERRIES";
       else if(randomString > .75 && randomString <= .875)
-         return BAR;
+         return "BAR";
       else if(randomString > .875)
-         return SEVEN;
+         return "7";
       else
          return "ERROR";
    }
    /*
-    * This method analysis the players play and calculates what they payout
+    * This method analysis the players play and calculates what they pay out
     * multiplier will be i.e., how much the bet will be multiplied by.
     * @param ThreeString object
-    * @return the payout multiplier
+    * @return the pay out multiplier
     */
-   int getPayMultiplier(ThreeString thePull)
+   static int getPayMultiplier(ThreeString thePull)
    {
       
       String stringPull1 = thePull.getString1();
@@ -125,32 +117,50 @@ public class Assig2
       String stringPull3 = thePull.getString3();
       
       //cherries [not cherries] [any]
-      if(stringPull1.equals(CHERRIES) 
-         && !stringPull2.equals(CHERRIES))
+      if(stringPull1.equals("CHERRIES") 
+         && !stringPull2.equals("CHERRIES"))
          return 5;
       //cherries cherries [not cherries]
-      else if(stringPull1.equals(CHERRIES) 
-         && stringPull2.equals(CHERRIES) 
-         && !stringPull3.equals(CHERRIES))
+      else if(stringPull1.equals("CHERRIES") 
+         && stringPull2.equals("CHERRIES") 
+         && !stringPull3.equals("CHERRIES"))
          return 15;
       // cherries cherries cherries
-      else if(stringPull1.equals(CHERRIES)
-         && stringPull2.equals(CHERRIES)
-         && stringPull3.equals(CHERRIES))
+      else if(stringPull1.equals("CHERRIES")
+         && stringPull2.equals("CHERRIES")
+         && stringPull3.equals("CHERRIES"))
          return 30;
       // BAR BAR BAR
-      else if(stringPull1.equals(BAR)
-         && stringPull2.equals(BAR)
-         && stringPull3.equals(BAR))
+      else if(stringPull1.equals("BAR")
+         && stringPull2.equals("BAR")
+         && stringPull3.equals("BAR"))
          return 50;
       // 7 7 7
-      else if(stringPull1.equals(SEVEN)
-         && stringPull2.equals(SEVEN)
-         && stringPull3.equals(SEVEN))
+      else if(stringPull1.equals("7")
+         && stringPull2.equals("7")
+         && stringPull3.equals("7"))
          return 100;
      
       // no winning combinations   
       return 0;
+   }
+   /**
+    * This method displays the winnings in dollars and displays the three
+    * Strings inside thePull. Additionally it will display whether the player 
+    * won or lost.
+    */
+   static void display(ThreeString thePull, int winnings)
+   {
+      //displays thePull
+      System.out.println("What did you expect, noise?");
+      System.out.println("Fine...");
+      System.out.println("Whiirll...spin...beep...bonk...bonk...bonk...");
+      System.out.println(thePull.toString());
+      
+      if(winnings > 0)
+         System.out.println("Congratulations! You won $" + winnings + "\n");
+      else
+         System.out.println("Sorry, your money is mine!\n");
    }
    
 
