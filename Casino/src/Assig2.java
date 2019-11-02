@@ -11,8 +11,6 @@ import java.util.Scanner;
  *
  */
 
-// Testing a commit instead of pull request
-
 public class Assig2
 {
    public static void main(String []args)
