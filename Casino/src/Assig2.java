@@ -16,27 +16,33 @@ public class Assig2
       Scanner in = new Scanner(System.in);
       ThreeString game = new ThreeString();
 
+      //loops through the game until the player enters 0 or the array is full.
       do 
       {
+         //prompts the user for input and stores into a variable
          int bet = getBet();
 
          //Breaks the loop if the user enter 0
          if (bet == 0)
             break; 
 
+         //performs the "pull" and stores the results in a variable
          ThreeString pull = pull();
 
+         //Receives the "pull" and calculates the pay out (if any) then stores
+         //in a variable
          int winnings = getPayMultiplier(pull) * bet;
-
+         
+         //calls the display method 
          display(pull,winnings); 
 
+         //calls the saveWinnings method and checks if the array is full
          boolean stopPlaying = game.saveWinnings(winnings);
 
          //Breaks the loop if the saveWinnings return true because the array
          //is full.
          if(stopPlaying == true)
             break;
-
 
       }while(true);
 
@@ -358,3 +364,345 @@ class ThreeString
       + winnings + "\nTotal Winnings: $" + sum;
    }
 }
+/*****************************OUTPUT 1******************************
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) CHERRIES 7
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 1
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 1
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) CHERRIES (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) 7
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 7
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: -1
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) CHERRIES
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 1
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+7 BAR (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 150
+Place your bet! Must be 1-100 or enter 0 to exit: 1
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) CHERRIES (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) CHERRIES (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES CHERRIES BAR
+Congratulations! You won $75
+
+Place your bet! Must be 1-100 or enter 0 to exit: 1
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+BAR CHERRIES (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES BAR (SPACE)
+Congratulations! You won $25
+
+Place your bet! Must be 1-100 or enter 0 to exit: 2
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES (SPACE) (SPACE)
+Congratulations! You won $10
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) CHERRIES
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 4
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+BAR CHERRIES (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES CHERRIES (SPACE)
+Congratulations! You won $75
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES BAR CHERRIES
+Congratulations! You won $25
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) 7 (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) CHERRIES
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+7 CHERRIES (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 0
+
+Thank goodness you're done! Go home!
+$0 $0 $0 $0 $0 $0 $0 $0 $0 $75 $0 $25 $10 $0 $0 $75 $25 $0 $0 $0 
+Total Winnings: $210
+********************************************************************/
+
+/*****************************OUTPUT 2******************************
+Place your bet! Must be 1-100 or enter 0 to exit: 23
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+7 7 (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: -1
+Place your bet! Must be 1-100 or enter 0 to exit: 150
+Place your bet! Must be 1-100 or enter 0 to exit: 999
+Place your bet! Must be 1-100 or enter 0 to exit: 23
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+7 CHERRIES CHERRIES
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 4
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) 7 (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 4
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) BAR (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES (SPACE) (SPACE)
+Congratulations! You won $25
+
+Place your bet! Must be 1-100 or enter 0 to exit: 
+2
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) CHERRIES CHERRIES
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 41
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+7 7 (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 1
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) 7
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+BAR (SPACE) BAR
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 4
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) BAR
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) 7 (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+7 BAR (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 5
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 4
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+BAR CHERRIES CHERRIES
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 54
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES 7 CHERRIES
+Congratulations! You won $270
+
+Place your bet! Must be 1-100 or enter 0 to exit: 12
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) (SPACE) (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 99
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+7 CHERRIES CHERRIES
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 14
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES (SPACE) (SPACE)
+Congratulations! You won $70
+
+Place your bet! Must be 1-100 or enter 0 to exit: 15
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES BAR (SPACE)
+Congratulations! You won $75
+
+Place your bet! Must be 1-100 or enter 0 to exit: 78
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+BAR CHERRIES (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 54
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+BAR (SPACE) BAR
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 98
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) 7 BAR
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 452
+Place your bet! Must be 1-100 or enter 0 to exit: 78
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+CHERRIES (SPACE) (SPACE)
+Congratulations! You won $390
+
+Place your bet! Must be 1-100 or enter 0 to exit: 2
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+BAR (SPACE) (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 13
+What did you expect, noise?
+Fine...
+Whiirll...spin...beep...bonk...bonk...bonk...
+(SPACE) 7 (SPACE)
+Sorry, your money is mine!
+
+Place your bet! Must be 1-100 or enter 0 to exit: 0
+
+Thank goodness you're done! Go home!
+$0 $0 $0 $0 $25 $0 $0 $0 $0 $0 $0 $0 $0 $0 $270 $0 $0 $70 $75 $0 
+$0 $0 $390 $0 $0 
+Total Winnings: $830
+
+********************************************************************/
+
+
+
