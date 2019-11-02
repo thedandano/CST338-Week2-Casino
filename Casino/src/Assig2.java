@@ -61,7 +61,7 @@ public class Assig2
     * Prompts the user for their bet and validates the bet. 
     * @return The users Bet.
     */
-   static int getBet()
+  static int getBet()
    {
       Scanner in = new Scanner(System.in);
       int userBet;
@@ -326,7 +326,7 @@ class ThreeString
       //checks the numPull variable if it is 40
       //it will return true thus making it the 
       //last turn
-      if(numPulls == 40)
+      if(numPulls == MAX_PULLS)
          return true;
 
       pullWinnings[numPulls] = winnings;
