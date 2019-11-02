@@ -11,6 +11,9 @@ import java.util.Scanner;
  */
 public class Assig2
 {
+   //Global Scanner Class
+   static Scanner in = new Scanner(System.in);
+   
    public static void main(String []args)
    {
       Scanner in = new Scanner(System.in);
@@ -63,7 +66,6 @@ public class Assig2
     */
   static int getBet()
    {
-      Scanner in = new Scanner(System.in);
       int userBet;
       boolean invalidBet = false;
 
