@@ -10,6 +10,9 @@ import java.util.Scanner;
  * Course: CST 338
  *
  */
+
+// Testing a commit instead of pull request
+
 public class Assig2
 {
    public static void main(String []args)
