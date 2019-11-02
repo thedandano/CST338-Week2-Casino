@@ -15,6 +15,7 @@ public class Assig2
    {
       Scanner in = new Scanner(System.in);
       ThreeString game = new ThreeString();
+      Boolean keepPlaying = true;
 
       //loops through the game until the player enters 0 or the array is full.
       do 
@@ -24,7 +25,7 @@ public class Assig2
 
          //Breaks the loop if the user enter 0
          if (bet == 0)
-            break; 
+            keepPlaying = false;
 
          //performs the "pull" and stores the results in a variable
          ThreeString pull = pull();
@@ -42,9 +43,9 @@ public class Assig2
          //Breaks the loop if the saveWinnings return true because the array
          //is full.
          if(stopPlaying == true)
-            break;
+            keepPlaying = false;
 
-      }while(true);
+      }while(keepPlaying == true);
 
       //prints out the players winnings summary
       System.out.println(game.displayWinnings());
