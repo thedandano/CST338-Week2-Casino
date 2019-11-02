@@ -9,6 +9,7 @@ import java.util.Scanner;
  * @version 11/1/19
  *
  */
+
 public class Assig2
 {
    //Global Scanner Class
