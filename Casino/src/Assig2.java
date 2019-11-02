@@ -1,34 +1,55 @@
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * This Program simulates a casino slots game. The user places a bet then
+ * the program performs a "pull." It then calculates the winnings (if any)
+ * and informs the user if they won or lost.
+ * @author Dan Sedano
+ * @version 11/1/19
+ *
+ */
 public class Assig2
 {
    public static void main(String []args)
    {
-      
-     ThreeString game = new ThreeString();
-     
-     do 
-     {
-        int bet = getBet();
-        
-        if (bet == 0)
-           System.exit(0);
-        
-        ThreeString pull = pull();
-        
-        int winnings = getPayMultiplier(pull) * bet;
-        
-        display(pull,winnings); 
-        
-        game.saveWinnings(winnings);
-        game.displayWinnings();
-        
-     }while(true);
-      
-     //game.displayWinnings();
+      Scanner in = new Scanner(System.in);
+      ThreeString game = new ThreeString();
+
+      do 
+      {
+         int bet = getBet();
+
+         //Breaks the loop if the user enter 0
+         if (bet == 0)
+            break; 
+
+         ThreeString pull = pull();
+
+         int winnings = getPayMultiplier(pull) * bet;
+
+         display(pull,winnings); 
+
+         boolean stopPlaying = game.saveWinnings(winnings);
+
+         //Breaks the loop if the saveWinnings return true because the array
+         //is full.
+         if(stopPlaying == true)
+            break;
+
+
+      }while(true);
+
+      //prints out the players winnings summary
+      System.out.println(game.displayWinnings());
+      //Closes scanner class
+      in.close();
+      //exits the program
+      System.exit(0);
+
+
    }
-   
+
    /**
     * Prompts the user for their bet and validates the bet. 
     * @return The users Bet.
@@ -38,36 +59,28 @@ public class Assig2
       Scanner in = new Scanner(System.in);
       int userBet;
       boolean invalidBet = false;
-      
+
       do 
       {
          System.out.print("Place your bet! Must be 1-100 or enter 0 to exit: ");
          userBet = in.nextInt();
-         //System.out.println("You bet: " + userBet);
-         
+
          //validates user input and provides appropriate responses
          if(userBet < 0)
          {
-            //System.out.println("Invalid Bet! Try again...\n");
             invalidBet = true;
          }
          else if(userBet > 100)
          {
-            //System.out.println("Invalid Bet! Try again...\n");
             invalidBet = true;
          }
-        /* else if(userBet == 0)
-         {
-            System.out.println("Thanks for playing!");
-            System.exit(0);
-         }*/
          else
          {
             invalidBet = false;
          }
-         
+
       }while(invalidBet);
-      
+
       return userBet; 
    }
    /**
@@ -79,14 +92,14 @@ public class Assig2
    static ThreeString pull()
    {
       ThreeString threeString = new ThreeString();
-      
+
       threeString.setString1(randString());
       threeString.setString2(randString());
       threeString.setString3(randString());
       //System.out.println(threeString.toString());
-      
+
       return threeString;
-      
+
    }
    /**
     * A Private helper method that generates a random String
@@ -97,9 +110,9 @@ public class Assig2
    {
       Random random = new Random();
       double randomString = random.nextDouble();
-     
+
       if(randomString <= .50)
-         return "SPACE";
+         return "(SPACE)";
       else if(randomString > .50 && randomString <= .75)
          return "CHERRIES";
       else if(randomString > .75 && randomString <= .875)
@@ -117,11 +130,11 @@ public class Assig2
     */
    static int getPayMultiplier(ThreeString thePull)
    {
-      
+
       String stringPull1 = thePull.getString1();
       String stringPull2 = thePull.getString2();
       String stringPull3 = thePull.getString3();
-      
+
       //cherries [not cherries] [any]
       if(stringPull1.equals("CHERRIES") 
          && !stringPull2.equals("CHERRIES"))
@@ -146,7 +159,7 @@ public class Assig2
          && stringPull2.equals("7")
          && stringPull3.equals("7"))
          return 100;
-     
+
       // no winning combinations   
       return 0;
    }
@@ -162,16 +175,22 @@ public class Assig2
       System.out.println("Fine...");
       System.out.println("Whiirll...spin...beep...bonk...bonk...bonk...");
       System.out.println(thePull.toString());
-      
+
       if(winnings > 0)
          System.out.println("Congratulations! You won $" + winnings + "\n");
       else
          System.out.println("Sorry, your money is mine!\n");
    }
-   
+
 
 }
 
+/**
+ * The ThreeString class
+ * @author Dan Sedano
+ * @version 11/1/19
+ *
+ */
 class ThreeString
 {
    public static final int MAX_LENS = 20;
@@ -181,7 +200,7 @@ class ThreeString
    public static int[] pullWinnings = new int[MAX_PULLS];
    //Instance Variables
    private String string1, string2, string3;
-   
+
    /**
     * Constructor initializes instance variables
     */
@@ -191,7 +210,7 @@ class ThreeString
       string2 = "";
       string3 = "";
    }
-   
+
    /**
     * Helper method returns true if the string is not null and if the string
     * length is less than or equal to the MAX_LENS which is 20 chars.
@@ -202,10 +221,10 @@ class ThreeString
    {
       if(str != null && str.length() <= MAX_LENS)
          return true;
-      
+
       return false;
    }
-   
+
    /**
     * Accessor for string1
     * @return string1
@@ -230,7 +249,7 @@ class ThreeString
    {
       return string3;
    }
-   
+
    /**
     * Mutator for string1
     * @param a string parameter
@@ -244,7 +263,7 @@ class ThreeString
          string1 = s1;
          return true;
       }
-      
+
       return false; 
    }
    /**
@@ -260,7 +279,7 @@ class ThreeString
          string2 = s2;
          return true;
       }
-      
+
       return false; 
    }
    /**
@@ -276,10 +295,10 @@ class ThreeString
          string3 = s3;
          return true;
       }
-      
+
       return false; 
    }
-   
+
    /**
     * toString() method to return private string variables as a string
     * @return string variables as a string
@@ -288,32 +307,54 @@ class ThreeString
    {      
       return string1 + " " + string2 + " " + string3;   
    }
-   
+
+   /**
+    * This method will have the players pay out in the array IFF there are
+    * less than or equal to 40 pulls.
+    * @param winnings
+    * @return true if the numPulls variable is over 40 pulls
+    */
    public boolean saveWinnings(int winnings)
    {
+      //checks the numPull variable if it is 40
+      //it will return true thus making it the 
+      //last turn
+      if(numPulls == 40)
+         return true;
+
       pullWinnings[numPulls] = winnings;
-      //numPulls++;
+
+      //ups the numPulls
+      numPulls++;
+      //System.out.println("numPulls: "+ numPulls);
       return false;
    }
+
    /**
     * Displays the Winnings Score
     * @return String representation of Winnings
     */
    public String displayWinnings()
    {
-      /**
-       * I want to change this method 
-       * Also need to add the pullWinnings()
-       */
-      String winnings = "";
+
+      String winnings ="";
       int sum = 0;
-      
-      for(int x = 0; x < pullWinnings.length; x++) 
+      final int NEW_LINE = 20;
+
+      for(int x = 0; x < numPulls; x++) 
       {
+         //adds the winnings to a int variable
          sum += pullWinnings[x];
-         winnings += pullWinnings[x];        
+
+         //adds a new line after 20 entries
+         if(x == NEW_LINE)
+            winnings += "\n";
+
+         //adds the array values to the string variable
+         winnings += "$" + pullWinnings[x] + " ";        
       }
 
-      return winnings + " Total Winnings: $" + sum;
+      return "\nThank goodness you're done! Go home!\n" 
+      + winnings + "\nTotal Winnings: $" + sum;
    }
 }
