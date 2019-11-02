@@ -7,6 +7,7 @@ import java.util.Scanner;
  * and informs the user if they won or lost.
  * @author Dan Sedano
  * @version 11/1/19
+ * Course: CST 338
  *
  */
 public class Assig2
