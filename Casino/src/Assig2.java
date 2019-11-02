@@ -25,7 +25,7 @@ public class Assig2
 
          //Breaks the loop if the user enter 0
          if (bet == 0)
-            keepPlaying = false;
+            break;
 
          //performs the "pull" and stores the results in a variable
          ThreeString pull = pull();
@@ -42,7 +42,7 @@ public class Assig2
 
          //Breaks the loop if the saveWinnings return true because the array
          //is full.
-         if(stopPlaying == true)
+         if (stopPlaying == true)
             keepPlaying = false;
 
       }while(keepPlaying == true);
@@ -99,11 +99,11 @@ public class Assig2
    static ThreeString pull()
    {
       ThreeString threeString = new ThreeString();
-
+      
+      //fills fills each String in the ThreeString to a random String
       threeString.setString1(randString());
       threeString.setString2(randString());
       threeString.setString3(randString());
-      //System.out.println(threeString.toString());
 
       return threeString;
 
@@ -344,7 +344,7 @@ class ThreeString
    public String displayWinnings()
    {
 
-      String winnings ="";
+      String winningsOutput ="";
       int sum = 0;
       final int NEW_LINE = 20;
 
@@ -355,14 +355,14 @@ class ThreeString
 
          //adds a new line after 20 entries
          if(x == NEW_LINE)
-            winnings += "\n";
+            winningsOutput += "\n";
 
          //adds the array values to the string variable
-         winnings += "$" + pullWinnings[x] + " ";        
+         winningsOutput += "$" + pullWinnings[x] + " ";        
       }
 
       return "\nThank goodness you're done! Go home!\n" 
-      + winnings + "\nTotal Winnings: $" + sum;
+      + winningsOutput + "\nTotal Winnings: $" + sum;
    }
 }
 /*****************************OUTPUT 1******************************
