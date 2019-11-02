@@ -7,8 +7,12 @@ import java.util.Scanner;
  * and informs the user if they won or lost.
  * @author Dan Sedano
  * @version 11/1/19
+ * Course: CST 338
  *
  */
+
+// Testing a commit instead of pull request
+
 public class Assig2
 {
    //Global Scanner Class
