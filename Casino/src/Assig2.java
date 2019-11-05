@@ -104,8 +104,17 @@ public class Assig2
       
       //fills fills each String in the ThreeString to a random String
       threeString.setString1(randString());
+      //if mutator call returns false then a default value is used
+      if(!threeString.setString1(randString()))
+         threeString.setString1("(SPACE)");
+      
       threeString.setString2(randString());
+      if(!threeString.setString2(randString()))
+         threeString.setString2("(SPACE)");
+      
       threeString.setString3(randString());
+      if(!threeString.setString3(randString()))
+         threeString.setString3("(SPACE)");
 
       return threeString;
 
@@ -329,16 +338,17 @@ class ThreeString
     */
    public boolean saveWinnings(int winnings)
    {
-      //checks the numPull variable if it is 40
-      //it will return true thus making it the 
-      //last turn
+      
+      //up the numPulls
+      numPulls++;
+     
+      //checks the numPull variable if it is 40 it will return true 
+      //thus making it the last turn
       if(numPulls == MAX_PULLS)
          return true;
 
       pullWinnings[numPulls] = winnings;
 
-      //ups the numPulls
-      numPulls++;
       return false;
    }
 
