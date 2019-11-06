@@ -6,7 +6,7 @@ import java.util.Scanner;
  * the program performs a "pull." It then calculates the winnings (if any)
  * and informs the user if they won or lost.
  * @author Dan Sedano
- * @version 11/1/19
+ * @version 11/5/19
  *
  */
 
