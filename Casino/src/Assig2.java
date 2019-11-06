@@ -14,7 +14,7 @@ public class Assig2
 {
    //Global Scanner Class
    static Scanner in = new Scanner(System.in);
-   
+
    public static void main(String []args)
    {
       Scanner in = new Scanner(System.in);
@@ -37,7 +37,7 @@ public class Assig2
          //Receives the "pull" and calculates the pay out (if any) then stores
          //in a variable
          int winnings = getPayMultiplier(pull) * bet;
-         
+
          //calls the display method 
          display(pull,winnings); 
 
@@ -64,7 +64,7 @@ public class Assig2
     * Prompts the user for their bet and validates the bet. 
     * @return The users Bet.
     */
-  static int getBet()
+   static int getBet()
    {
       int userBet;
       boolean invalidBet = false;
@@ -101,17 +101,17 @@ public class Assig2
    static ThreeString pull()
    {
       ThreeString threeString = new ThreeString();
-      
+
       //fills fills each String in the ThreeString to a random String
       threeString.setString1(randString());
       //if mutator call returns false then a default value is used
       if(!threeString.setString1(randString()))
          threeString.setString1("(SPACE)");
-      
+
       threeString.setString2(randString());
       if(!threeString.setString2(randString()))
          threeString.setString2("(SPACE)");
-      
+
       threeString.setString3(randString());
       if(!threeString.setString3(randString()))
          threeString.setString3("(SPACE)");
@@ -141,7 +141,7 @@ public class Assig2
          return "7";
       else
          return "ERROR";
-      
+
       //Ran a test 10000 times for probability: Space appeared 49.48%, 
       //Cherries 25.24%, Bar 13.11%, and 12.18% of the time
    }
@@ -338,10 +338,10 @@ class ThreeString
     */
    public boolean saveWinnings(int winnings)
    {
-      
+
       //up the numPulls
       numPulls++;
-     
+
       //checks the numPull variable if it is 40 it will return true 
       //thus making it the last turn
       if(numPulls == MAX_PULLS)
@@ -564,7 +564,7 @@ Thank goodness you're done! Go home!
 $0 $0 $0 $0 $0 $0 $0 $0 $0 $675 $0 $0 $0 $370 $0 $0 $0 $0 $0 $0 
 $0 $110 $0 $0 $0 
 Total Winnings: $1155
-********************************************************************/
+ ********************************************************************/
 
 /*****************************OUTPUT 2******************************
 Place your bet! Must be 1-100 or enter 0 to exit: 99
@@ -744,7 +744,7 @@ $495 $0 $0 $390 $0 $1950 $160 $0 $0 $0 $0 $0 $0 $1305 $810 $0 $0 $0 $0 $720
 $0 $0 $0 $0 
 Total Winnings: $5830
 
-********************************************************************/
+ ********************************************************************/
 
 
 
